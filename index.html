@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>Booking Service | Premium Appointments</title>
     
     <!-- SEO & Social Media Meta Tags -->
@@ -12,6 +12,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://picsum.photos/seed/booking/1200/630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,7 +21,8 @@
       body {
         font-family: 'Inter', sans-serif;
         -webkit-tap-highlight-color: transparent;
-        overscroll-behavior-y: contain; /* Prevents pull-to-refresh in some browsers for better App feel */
+        overscroll-behavior-y: contain;
+        background-color: #f9fafb;
       }
       .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -28,10 +31,21 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
-      /* Smooth transitions for mobile */
-      * {
-        -webkit-overflow-scrolling: touch;
-      }
+      
+      /* Animation classes since tailwindcss-animate isn't in base CDN */
+      @keyframes in-fade { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes in-slide-from-bottom { from { transform: translateY(1.5rem); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      @keyframes in-slide-from-right { from { transform: translateX(1.5rem); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+      @keyframes in-zoom { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+      .animate-in { animation-duration: 400ms; animation-fill-mode: both; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+      .fade-in { animation-name: in-fade; }
+      .slide-in-from-bottom-4 { animation-name: in-slide-from-bottom; }
+      .slide-in-from-right-4 { animation-name: in-slide-from-right; }
+      .zoom-in-95 { animation-name: in-zoom; }
+
+      /* Better touch support */
+      * { -webkit-overflow-scrolling: touch; }
     </style>
     <script type="importmap">
     {
@@ -39,7 +53,7 @@
         "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
         "react": "https://esm.sh/react@^19.2.3",
         "react/": "https://esm.sh/react@^19.2.3/",
-        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.475.0",
         "@google/genai": "https://esm.sh/@google/genai"
       }
     }
