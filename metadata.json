@@ -1,5 +1,7 @@
 {
   "name": "Instagram-Style Booking WebApp",
   "description": "A sleek, mobile-first online booking application designed to look like a premium Instagram in-app browser experience, featuring service selection, calendar scheduling, and an animated booking status.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "geolocation"
+  ]
 }
