@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Layout from './components/Layout.tsx';
-import ServiceSelection from './components/ServiceSelection.tsx';
-import DateTimeSelection from './components/DateTimeSelection.tsx';
-import BookingStatus from './components/BookingStatus.tsx';
-import { BookingStep, BookingState, Service } from './types.ts';
+import Layout from './components/Layout';
+import ServiceSelection from './components/ServiceSelection';
+import DateTimeSelection from './components/DateTimeSelection';
+import BookingStatus from './components/BookingStatus';
+import { BookingStep, BookingState, Service } from './types';
 
 const App: React.FC = () => {
   const [step, setStep] = useState<BookingStep>(BookingStep.SERVICE_SELECTION);
@@ -30,7 +30,6 @@ const App: React.FC = () => {
   };
 
   const handleFinish = () => {
-    // Reset app for next booking or redirect
     setStep(BookingStep.SERVICE_SELECTION);
     setBooking({ service: null, date: null, time: null });
   };

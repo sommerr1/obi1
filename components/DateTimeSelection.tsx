@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { MOCK_TIME_SLOTS } from '../constants.tsx';
+import { MOCK_TIME_SLOTS } from '../constants';
 import { Calendar as CalendarIcon, Clock, Check, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface DateTimeSelectionProps {
@@ -12,14 +12,12 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({ onConfirm }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [viewMonth, setViewMonth] = useState(new Date());
 
-  // Quick select days (14 days)
   const quickDays = useMemo(() => Array.from({ length: 14 }, (_, i) => {
     const d = new Date();
     d.setDate(d.getDate() + i);
     return d;
   }), []);
 
-  // Full month grid calculation
   const calendarGrid = useMemo(() => {
     const year = viewMonth.getFullYear();
     const month = viewMonth.getMonth();
@@ -27,11 +25,9 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({ onConfirm }) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     
     const days = [];
-    // Padding for start of month
     for (let i = 0; i < firstDay; i++) {
       days.push(null);
     }
-    // Days of month
     for (let i = 1; i <= daysInMonth; i++) {
       days.push(new Date(year, month, i));
     }
@@ -67,7 +63,6 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({ onConfirm }) => {
           <p className="text-sm text-gray-500">Pick a slot that works best for you.</p>
         </div>
 
-        {/* Calendar Section */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2 text-sm font-semibold text-gray-800">
@@ -86,7 +81,6 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({ onConfirm }) => {
           </div>
 
           {!isExpanded ? (
-            /* Horizontal Quick Select */
             <div className="flex gap-3 overflow-x-auto pb-4 no-scrollbar -mx-4 px-4 animate-in fade-in duration-300">
               {quickDays.map((date, i) => (
                 <button
@@ -111,7 +105,6 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({ onConfirm }) => {
               ))}
             </div>
           ) : (
-            /* Full Month Grid */
             <div className="bg-gray-50/50 rounded-3xl p-4 border border-gray-100 animate-in zoom-in-95 duration-300">
               <div className="flex items-center justify-between mb-4 px-2">
                 <button onClick={() => changeMonth(-1)} className="p-1 hover:bg-white rounded-full shadow-sm">
@@ -159,7 +152,6 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({ onConfirm }) => {
           )}
         </div>
 
-        {/* Time Grid */}
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4 text-sm font-semibold text-gray-800">
             <Clock size={16} className="text-blue-500" />
@@ -186,7 +178,6 @@ const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({ onConfirm }) => {
         </div>
       </div>
 
-      {/* Sticky Bottom Action */}
       <div className="p-4 bg-white/80 backdrop-blur-md border-t border-gray-100 absolute bottom-0 left-0 right-0 z-10">
         <button
           disabled={!selectedTime}

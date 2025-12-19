@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { Service } from './types';
 
 export const MOCK_SERVICES: Service[] = [

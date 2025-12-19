@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Loader2, CheckCircle2 } from 'lucide-react';
-import { BookingState } from '../types.ts';
+import { BookingState } from '../types';
 
 interface BookingStatusProps {
   booking: BookingState;
