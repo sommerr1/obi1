@@ -12,8 +12,12 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://picsum.photos/seed/booking/1200/630" />
     <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Mobile Capability Tags (Fixes console warning) -->
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Booking">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -32,7 +36,7 @@
         scrollbar-width: none;
       }
       
-      /* Animation classes since tailwindcss-animate isn't in base CDN */
+      /* Animation classes */
       @keyframes in-fade { from { opacity: 0; } to { opacity: 1; } }
       @keyframes in-slide-from-bottom { from { transform: translateY(1.5rem); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
       @keyframes in-slide-from-right { from { transform: translateX(1.5rem); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -50,10 +54,10 @@
     <script type="importmap">
     {
       "imports": {
-        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-        "react": "https://esm.sh/react@^19.2.3",
-        "react/": "https://esm.sh/react@^19.2.3/",
-        "lucide-react": "https://esm.sh/lucide-react@^0.475.0",
+        "react-dom/": "https://esm.sh/react-dom@19.0.0/",
+        "react": "https://esm.sh/react@19.0.0",
+        "react/": "https://esm.sh/react@19.0.0/",
+        "lucide-react": "https://esm.sh/lucide-react@0.475.0",
         "@google/genai": "https://esm.sh/@google/genai"
       }
     }
@@ -61,5 +65,7 @@
   </head>
   <body class="bg-gray-50 text-gray-900">
     <div id="root"></div>
+    <!-- Подключение основного JS модуля (исправляет отсутствие загрузки приложения) -->
+    <script type="module" src="index.tsx"></script>
   </body>
 </html>
