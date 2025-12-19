@@ -1,0 +1,1 @@
+{ "build": { "command": "npm run build", "output_directory": "dist" }, "functions": { "enabled": false } }
