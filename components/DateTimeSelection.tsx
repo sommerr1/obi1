@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { MOCK_TIME_SLOTS } from '../constants';
+import { MOCK_TIME_SLOTS } from '../constants.tsx';
 import { Calendar as CalendarIcon, Clock, Check, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface DateTimeSelectionProps {

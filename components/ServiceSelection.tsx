@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { MOCK_SERVICES } from '../constants';
-import { Service } from '../types';
+import { MOCK_SERVICES } from '../constants.tsx';
+import { Service } from '../types.ts';
 import { ChevronRight, Clock } from 'lucide-react';
 
 interface ServiceSelectionProps {

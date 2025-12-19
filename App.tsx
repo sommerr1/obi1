@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
-import Layout from './components/Layout';
-import ServiceSelection from './components/ServiceSelection';
-import DateTimeSelection from './components/DateTimeSelection';
-import BookingStatus from './components/BookingStatus';
-import { BookingStep, BookingState, Service } from './types';
+import Layout from './components/Layout.tsx';
+import ServiceSelection from './components/ServiceSelection.tsx';
+import DateTimeSelection from './components/DateTimeSelection.tsx';
+import BookingStatus from './components/BookingStatus.tsx';
+import { BookingStep, BookingState, Service } from './types.ts';
 
 const App: React.FC = () => {
   const [step, setStep] = useState<BookingStep>(BookingStep.SERVICE_SELECTION);
