@@ -25,6 +25,13 @@ const ServiceSelection: React.FC<ServiceSelectionProps> = ({ onSelect }) => {
             src={service.image} 
             alt={service.name} 
             className="w-20 h-20 rounded-xl object-cover"
+            crossOrigin="anonymous"
+            referrerPolicy="no-referrer"
+            loading="lazy"
+            onError={(e) => {
+              // Fallback на placeholder если изображение не загрузилось
+              e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23e5e7eb" width="400" height="400"/%3E%3Ctext fill="%239ca3af" font-family="sans-serif" font-size="20" dy="10.5" font-weight="bold" x="50%25" y="50%25" text-anchor="middle"%3EImage%3C/text%3E%3C/svg%3E';
+            }}
           />
           <div className="flex-1">
             <h3 className="font-semibold text-gray-900 mb-0.5">{service.name}</h3>
